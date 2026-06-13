@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/widget_name_cost_2x1"
+    android:initialKeyguardLayout="@layout/xlyra_widget_cost_2x1"
+    android:initialLayout="@layout/xlyra_widget_cost_2x1"
+    android:minWidth="110dp"
+    android:minHeight="52dp"
+    android:previewImage="@drawable/ic_launcher_foreground"
+    android:resizeMode="horizontal|vertical"
+    android:targetCellWidth="2"
+    android:targetCellHeight="1"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen" />

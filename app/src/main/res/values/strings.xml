@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">xLyra 卡片</string>
-    <string name="widget_name">xLyra 用量</string>
+    <string name="widget_name">xLyra 用量 4x3</string>
+    <string name="widget_name_4x2">xLyra 用量 4x2</string>
+    <string name="widget_name_4x1">xLyra 成本 4x1</string>
+    <string name="widget_name_cost_2x1">xLyra 今日 2x1</string>
+    <string name="widget_name_quota_2x1">xLyra 配额 2x1</string>
 </resources>

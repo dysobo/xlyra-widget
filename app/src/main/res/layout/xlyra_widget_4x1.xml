@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root_4x1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1.45"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/widget_4x1_today_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="--"
+                android:textColor="#0F172A"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/widget_4x1_today_tokens"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="--"
+                android:textColor="#334155"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:includeFontPadding="false"
+            android:text="今日成本  Tokens"
+            android:textColor="#64748B"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="14dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/widget_4x1_total_cost"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:ellipsize="end"
+            android:gravity="end|bottom"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="--"
+            android:textColor="#0F172A"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:gravity="end"
+            android:includeFontPadding="false"
+            android:text="累计成本"
+            android:textColor="#64748B"
+            android:textSize="11sp" />
+    </LinearLayout>
+</LinearLayout>

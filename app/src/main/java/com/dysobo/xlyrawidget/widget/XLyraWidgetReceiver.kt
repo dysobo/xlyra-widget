@@ -12,7 +12,12 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class XLyraWidgetReceiver : AppWidgetProvider() {
+open class BaseXLyraWidgetReceiver(
+    private val variant: XLyraWidgetVariant,
+) : AppWidgetProvider() {
+    private val target: XLyraWidget.WidgetTarget
+        get() = XLyraWidget.WidgetTarget(javaClass, variant)
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -23,7 +28,7 @@ class XLyraWidgetReceiver : AppWidgetProvider() {
             try {
                 val settings = SettingsStore(context).settings.first()
                 appWidgetIds.forEach { widgetId ->
-                    XLyraWidget.updateWidget(context, appWidgetManager, widgetId, settings)
+                    XLyraWidget.updateWidget(context, appWidgetManager, widgetId, settings, target)
                 }
             } finally {
                 pendingResult.finish()
@@ -35,9 +40,10 @@ class XLyraWidgetReceiver : AppWidgetProvider() {
         super.onReceive(context, intent)
         if (intent.action == XLyraWidget.ACTION_REFRESH) {
             val manager = AppWidgetManager.getInstance(context)
-            val ids = manager.getAppWidgetIds(intent.component)
-            if (ids != null && ids.isNotEmpty()) {
-                val loading = XLyraWidget.buildLoadingViews(context)
+            val component = intent.component ?: return
+            val ids = manager.getAppWidgetIds(component)
+            if (ids.isNotEmpty()) {
+                val loading = XLyraWidget.buildLoadingViews(context, target)
                 ids.forEach { manager.updateAppWidget(it, loading) }
             }
             XLyraRefreshWorker.enqueueOneTime(context)
@@ -48,3 +54,13 @@ class XLyraWidgetReceiver : AppWidgetProvider() {
         val widgetScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     }
 }
+
+class XLyraWidgetReceiver : BaseXLyraWidgetReceiver(XLyraWidgetVariant.Full4x3)
+
+class XLyraWidget4x2Receiver : BaseXLyraWidgetReceiver(XLyraWidgetVariant.Compact4x2)
+
+class XLyraWidget4x1Receiver : BaseXLyraWidgetReceiver(XLyraWidgetVariant.Cost4x1)
+
+class XLyraWidgetCost2x1Receiver : BaseXLyraWidgetReceiver(XLyraWidgetVariant.Cost2x1)
+
+class XLyraWidgetQuota2x1Receiver : BaseXLyraWidgetReceiver(XLyraWidgetVariant.Quota2x1)
