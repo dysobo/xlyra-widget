@@ -8,24 +8,22 @@
 - 主界面使用 Jetpack Compose
 - 桌面组件使用传统 `AppWidgetProvider + RemoteViews`
 - 兼容荣耀等厂商桌面，避免 Glance 在部分系统上显示异常
-- 4x3 桌面卡片布局
+- 多个桌面卡片布局：4x3、4x2、4x1、2x1
 - WorkManager 后台定时刷新
 - 桌面卡片支持手动刷新
 - DataStore 保存配置和本地缓存
 - EncryptedSharedPreferences 加密保存 Admin Token
 - 支持用户自行配置自托管 xLyra 地址
 
-## 桌面卡片内容
+## 桌面卡片
 
-- 今日成本
-- 累计成本
-- 今日请求数
-- 今日 Tokens
-- RPM / TPM
-- Codex 5h 剩余额度进度条
-- Codex 7d 剩余额度进度条
-- 今日模型成本 Top2
-- 最近刷新时间
+可选小组件：
+
+- `xLyra 用量 4x3`：完整信息，包含成本、请求、Tokens、RPM/TPM、5h/7d 进度条、Top2 模型。
+- `xLyra 用量 4x2`：美化紧凑版，显示今日成本 + Tokens、累计成本、5h/7d 百分比、Top2 模型。
+- `xLyra 成本 4x1`：只显示今日成本 + Tokens、累计成本。
+- `xLyra 今日 2x1`：只显示今日成本 + Tokens。
+- `xLyra 配额 2x1`：只显示 5h / 7d 剩余额度进度条。
 
 ## 构建
 
@@ -61,8 +59,8 @@ adb shell pm install -r -g /data/local/tmp/xlyra-widget.apk
 3. 填写 Admin Access Token。
 4. 设置刷新间隔。
 5. 点击保存并立即刷新。
-6. 回到桌面添加 `xLyra 用量` 小组件。
-7. 推荐使用 4x3 尺寸。
+6. 回到桌面添加需要的 `xLyra` 小组件。
+7. 如果需要完整信息，推荐使用 4x3；如果追求美观紧凑，推荐使用 4x2。
 
 ## 安全说明
 
